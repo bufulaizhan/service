@@ -10,7 +10,7 @@ router.route('/ping').get (req, res)->
 console.log 'enjoy coffee'
 
 app.use bodyParser.json()
-app.use '/api', router
+app.use('/api', router)
 app.listen port
 
 

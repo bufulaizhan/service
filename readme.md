@@ -21,3 +21,30 @@ npm install -g coffee-script
 ```
 coffee server.coffee
 ```
+## 目录和文件
+结构如下
+```
+tree -I '.git|node*|*.js'
+.
+├── config.coffee
+├── controllers
+│   ├── topic.coffee
+│   └── user.coffee
+├── models
+│   ├── comment.coffee
+│   ├── stand.coffee
+│   ├── topic.coffee
+│   └── user.coffee
+├── package.json
+├── readme.md
+├── routing.coffee
+├── server.coffee
+└── utils.coffee
+```
+入口文件是server.coffee，是服务的引导程序，主要是数据库连接和socket.IO初始化
+controllers是直接的api，写法和格式直接copy其他的，请注意在传入对象的时候一定需要router和io，router是路由，io是socket.IO实例
+models是mongoDB对象，需要增加可以直接copy已有的，使用者需要以相对路径require，即：
+```
+User = require "../models/user.coffee"
+```
+utils.coffee是常用静态方法的集合，用的时候require即可

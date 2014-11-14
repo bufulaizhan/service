@@ -1,16 +1,24 @@
 express = require "express"
 app = express()
-bodyParser = require 'body-parser'
-router = require('express').Router()
-port = 1024
+bodyParser = require "body-parser"
+config = require "./config"
 
-router.route('/ping').get (req, res)->
-  res.send "pong"
+mongoose = require 'mongoose'
+mongoose.connect "#{config.db_url}/#{config.db}"
 
-console.log 'enjoy coffee'
+
+http = require 'http'
+server = http.createServer app
+io = require('socket.io').listen server
+
+require("./routing.coffee")(app,io)
+
+
+console.log "enjoy coffee on #{config.app_port}"
+
+
 
 app.use bodyParser.json()
-app.use('/api', router)
-app.listen port
+app.listen config.app_port
 
 

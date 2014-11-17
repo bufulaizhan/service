@@ -1,6 +1,6 @@
 fs = require "fs"
 
-module.exports = (app, io)->
+module.exports = (app, io, validator)->
   router = require("express").Router()
   router.use (req, res, next)->
     console.log "#{Date.now()} [#{req.ip}] plugged in:#{req.originalUrl } by [#{req.method}]"
@@ -11,5 +11,5 @@ module.exports = (app, io)->
 
 
   fs.readdirSync("#{__dirname}/controllers/").forEach (name)->
-    require("#{__dirname}/controllers/#{name}")(router, io)
+    require("#{__dirname}/controllers/#{name}")(router, io, validator)
     app.use('/api', router);

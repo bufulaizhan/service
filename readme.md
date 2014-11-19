@@ -51,7 +51,7 @@ utils.coffee是常用静态方法的集合，用的时候require即可
 
 
 # 代码编写
-## 验证器
+## 静态验证器
 验证器使用了 (express-validator)[https://github.com/ctavan/express-validator],具体API请查询网站。
 在Utils中抽象了发送错误信息的方法，使用方法如下
 ```
@@ -65,3 +65,19 @@ utils.coffee是常用静态方法的集合，用的时候require即可
       res.send "ok", 201
 ```
 传入validationErros(), response对象以及验证成功后的回调方法即可
+
+## 数据验证
+数据验证出现在存取数据库时进行校验，如果不通过要求是无法存入的，例如username必须唯一。
+实现方式是通过mongoose的middleware，在pre save的时候进行校验产生error，如下
+```
+UserSchema.pre 'save', (next)->
+  self = @
+  mongoose.model('User').findOne username: @username, 'username', (error, result)->
+    if error
+      next error
+    else if result
+      self.invalidate "username","username must be unique"
+      next new Error("username must be unique")
+    else
+      next()
+```

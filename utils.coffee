@@ -1,6 +1,6 @@
 crypto = require "crypto"
 
-module.exports = {
+module.exports =
   genUUID: ->
     'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) ->
       r = Math.random() * 16 | 0
@@ -9,7 +9,7 @@ module.exports = {
     )
   validate: (errors, res, callback)->
     if errors
-      res.send " #{JSON.stringify(errors)}",400
+      res.send " #{JSON.stringify(errors)}", 400
     else
       callback()
-}
+

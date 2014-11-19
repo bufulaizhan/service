@@ -1,4 +1,4 @@
-module.exports = (router, io, validator)->
+module.exports = (router, io)->
   Topic = require "../models/topic.coffee"
   User = require "../models/user.coffee"
   Utils = require "../utils.coffee"
@@ -8,7 +8,12 @@ module.exports = (router, io, validator)->
     user.username = req.body.username
     user.from = 'native'
     # validator
-    req.checkBody('username', 'Not null').notEmpty().isInt()
+    req.checkBody('username', 'Not null').notEmpty()
     Utils.validate req.validationErrors(), res, ()->
-      res.send "ok", 201
+      user.save (error, saved)->
+        if error
+          console.log error
+          res.status(400).send(error.message)
+        else
+          res.send saved
 

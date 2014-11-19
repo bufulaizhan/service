@@ -13,14 +13,14 @@ http = require 'http'
 server = http.createServer app
 io = require('socket.io').listen server
 app.use bodyParser.json()
-app.use validator()
+
+require("./validators.coffee")(validator,app)
 
 
-require("./routing.coffee")(app, io, validator)
+require("./routing.coffee")(app, io)
 
 
 console.log "enjoy coffee on #{config.app_port}"
-
 
 
 app.listen config.app_port

@@ -1,4 +1,5 @@
 RESTful api service
+[![Build Status](https://travis-ci.org/bufulaizhan/service.svg?branch=master)](https://travis-ci.org/bufulaizhan/service)
 
 - - -
 

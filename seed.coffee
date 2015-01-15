@@ -7,7 +7,6 @@ fs = require 'fs'
 fs.readdirSync("#{__dirname}/seeds/").forEach (name)->
   fileExtensions = /^.*\.coffee$/
   if fileExtensions.test name
-    console.log "seed in #{name}"
     seed = require("#{__dirname}/seeds/#{name}")()
     seedSequence.forEach (fn)->
       seed[fn]() if seed[fn]

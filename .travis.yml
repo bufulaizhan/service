@@ -6,13 +6,16 @@ services:
 
 before_script:
   - npm install coffee-script -g
+  - npm install forever -g
   - npm install  
+  
 
 script:
-  - coffee server.coffee &
+  - forever -l ./server.log start -c coffee server.coffee 
   - npm test
 
 after_failure:
-  -
+  - cat ./server.log
+
 notifications:
   slack: ngacn:g7UKlznzOydd9RD1fDwYjXLi

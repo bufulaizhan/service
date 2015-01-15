@@ -14,10 +14,10 @@ script:
   - forever -l ./server.log start -c coffee server.coffee 
   - forever list
 #  - npm test
-  - curl http://127.0.0.1:1024/api/ping
+  - wget http://127.0.0.1:1024/api/ping
 
 after_failure:
-  - cat ./server.log
+  - cat ~/.forever/server.log
 
 notifications:
   slack: ngacn:g7UKlznzOydd9RD1fDwYjXLi

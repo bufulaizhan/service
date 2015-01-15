@@ -24,7 +24,8 @@
     "socket.io": "^1.1.0",
     "coffee-script": "1.8.0",
     "express-validator": "^2.6.0",
-    "log4js": "^0.6.21"
+    "log4js": "^0.6.21",
+    "jasmine-node": "^1.14.5"
   },
   "homepage": "https://github.com/bufulaizhan/service"
 }

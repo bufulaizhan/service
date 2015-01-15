@@ -12,8 +12,9 @@ before_script:
 
 script:
   - forever -l ./server.log start -c coffee server.coffee 
-  - npm test
-  - curl http://localhost:1024/api/ping
+  - forever list
+#  - npm test
+  - curl http://127.0.0.1:1024/api/ping
 
 after_failure:
   - cat ./server.log

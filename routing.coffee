@@ -9,7 +9,7 @@ module.exports = (app, io)->
   router.get "/ping", (req, res)->
     res.send "pong"
 
-
   fs.readdirSync("#{__dirname}/controllers/").forEach (name)->
+    
     require("#{__dirname}/controllers/#{name}")(router, io)
     app.use('/api', router);

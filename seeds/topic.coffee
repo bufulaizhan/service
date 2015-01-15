@@ -1,4 +1,5 @@
 module.exports = -> 
+  Topic = require '../models/topic.coffee'
   beforeRun: ->
     console.log "ready to run"
   run: ->

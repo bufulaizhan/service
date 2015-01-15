@@ -4,7 +4,7 @@
   "description": "api service for bufulaizhan.com",
   "main": "server.js",
   "scripts": {
-    "test": "node node_modules/jasmine-node/lib/jasmine-node/cli.js --coffee test/"
+    "test": "node node_modules/jasmine-node/lib/jasmine-node/cli.js --coffee --verbose test"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "log4js": "^0.6.21",
     "jasmine-node": "^1.14.5"
   },
-  "homepage": "https://github.com/bufulaizhan/service"
+  "homepage": "https://github.com/bufulaizhan/service",
+  "devDependencies": {
+    "request": "^2.51.0"
+  }
 }

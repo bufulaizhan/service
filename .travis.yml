@@ -9,14 +9,16 @@ before_script:
   - npm install forever -g
   - npm install  
   - forever -l ./server.log start -c coffee server.coffee 
-  - sleep 3
+  - sleep 1
 
 script:
   - npm test
-  - wget http://127.0.0.1:1024/api/ping
 
 after_failure:
   - cat ~/.forever/server.log
+
+after_success:
+  - echo "done"
 
 notifications:
   slack: ngacn:g7UKlznzOydd9RD1fDwYjXLi

@@ -21,7 +21,7 @@
     "body-parser": "~1.0.1",
     "validator": "^3.16.1",
     "fsm-utils": "0.0.1",
-    "socket.io": "^1.1.0",
+    "socket.io": "1.2.0",
     "coffee-script": "1.8.0",
     "express-validator": "^2.6.0",
     "log4js": "^0.6.21",

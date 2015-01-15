@@ -8,12 +8,11 @@ before_script:
   - npm install coffee-script -g
   - npm install forever -g
   - npm install  
-  
+  - forever -l ./server.log start -c coffee server.coffee 
+  - sleep 3
 
 script:
-  - forever -l ./server.log start -c coffee server.coffee 
-  - forever list
-#  - npm test
+  - npm test
   - wget http://127.0.0.1:1024/api/ping
 
 after_failure:

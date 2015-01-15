@@ -10,6 +10,9 @@ before_script:
 
 script:
   - coffee server.coffee &
+  - npm test
 
 after_failure:
   -
+notifications:
+  slack: ngacn:g7UKlznzOydd9RD1fDwYjXLi
